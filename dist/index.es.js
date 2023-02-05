@@ -2561,6 +2561,19 @@ function isTextElement(elements) {
     return elements.length === 1 && elements[0].type === "text";
 }
 
+function getSelectedText() {
+    if (window.getSelection) {
+        return window.getSelection().toString();
+    } else if (document.selection) {
+        return document.selection.createRange().text;
+    }
+    return '';
+}
+
+function onSelectText(e) {
+    e.stopPropagation();
+}
+
 var Element = memo(function (_ref) {
     var name = _ref.name,
         elements = _ref.elements,
@@ -2588,7 +2601,9 @@ var Element = memo(function (_ref) {
                 event.stopPropagation();
                 event.preventDefault();
 
-                toggleCollapse(!collapsed);
+                if (getSelectedText() === '') {
+                    toggleCollapse(!collapsed);
+                }
             }
         },
         React.createElement(
@@ -2607,7 +2622,11 @@ var Element = memo(function (_ref) {
             { style: { color: theme.separatorColor } },
             elements ? '>' : '/>'
         ),
-        elements && !collapsed && React.createElement(Elements, { elements: elements, theme: theme, indentation: indentation + getIndentationString(indentSize), indentSize: indentSize, collapsible: collapsible }),
+        elements && !collapsed && React.createElement(
+            'span',
+            { onClick: onSelectText },
+            React.createElement(Elements, { elements: elements, theme: theme, indentation: indentation + getIndentationString(indentSize), indentSize: indentSize, collapsible: collapsible })
+        ),
         elements && React.createElement(
             'span',
             { style: { color: theme.separatorColor } },
