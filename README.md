@@ -1,25 +1,23 @@
 # react-xml-viewer
-Simple and configurable React component to prettify XMLs.
->
+Simple and configurable React component to prettify XMLs, now supporting React 18.
+
+This is a fork of https://github.com/alissonmbr/react-xml-viewer and the only adjustment done so far was bumping up the peer dependency version for React.
 
 [![NPM](https://img.shields.io/npm/v/react-xml-viewer.svg)](https://www.npmjs.com/package/react-xml-viewer) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
 <img src="https://raw.githubusercontent.com/alissonmbr/react-xml-viewer/master/example/example-ss.png" width="300"/>
 
-## Codesandbox demo
-<a href="https://codesandbox.io/s/react-xml-viewer-example-ir4zo">Demo</a>
-
 ## Install
 
 ```bash
-npm install --save react-xml-viewer
+npm install --save react-xml-viewer-2
 ```
 
 ## Usage
 
 ```jsx
 import React, { Component } from 'react'
-import XMLViewer from 'react-xml-viewer'
+import XMLViewer from 'react-xml-viewer-2'
 
 const xml = '<hello>World</hello>'
 
@@ -89,7 +87,7 @@ export default class App extends Component {
 ```
 
 ## Run with typescript
-If you have difficulties to run with typescript declare module 'react-xml-viewer' to react-app-env.d.ts
+If you have difficulties to run with typescript declare module 'react-xml-viewer-2' to react-app-env.d.ts
 
 
 ## License
